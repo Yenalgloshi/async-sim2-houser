@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import './App.css';
+import './Wizard.css';
 
-class App extends Component {
+class Wizard extends Component {
   render() {
     return (
       <div className="App">
-        Sup?
+        This is the Wizard page
       </div>
     );
   }
 }
 
-export default App;
+export default Wizard;

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import './App.css';
+import './Step3.css';
 
-class App extends Component {
+class Step3 extends Component {
   render() {
     return (
       <div className="App">
-        Sup?
+        This is the Step3 page
       </div>
     );
   }
 }
 
-export default App;
+export default Step3;
