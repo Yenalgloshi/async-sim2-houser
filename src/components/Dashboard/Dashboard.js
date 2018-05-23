@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Dashboard.css';
+import Header from '../Header/Header';
 
 class Dashboard extends Component {
   constructor(){
@@ -39,9 +40,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="App">
-        <div className="header">
-          This is where the Header goes
-        </div>
+        <Header/>
         <div className="dash-content">
           <div className="dash-UI">
             <button className="dash-addProp-btn">Add New Property</button>
