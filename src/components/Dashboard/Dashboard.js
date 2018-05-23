@@ -43,15 +43,15 @@ class Dashboard extends Component {
         <Header/>
         <div className="dash-content">
           <div className="dash-UI">
-            <button className="dash-addProp-btn">Add New Property</button>
+            <button className="dash-addProp-btn">Add new property</button>
             <div className="dash-filter">
               List properties with "desired rent" greater than: $
-              <input type="text"/>
+              <input type="text" className="dash-filter-input"/>
               <button className="dash-filter-btn">Filter</button>
               <button className="dash-reset-btn">Reset</button>
             </div>
           </div>
-
+            <hr className="dash-divider"/>
           <div className="dash-listing">
             Home Listings
           </div>
