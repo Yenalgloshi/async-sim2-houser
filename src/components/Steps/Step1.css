@@ -6,7 +6,7 @@
 .step1-content{
   background: linear-gradient(to bottom, #e2f3ea, #ffffff);
   height: 93vh;
-  width: 50%;
+  width: 55%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -38,6 +38,8 @@
   font-weight: bold;
 }
 
+.step1-cancel-btn:hover {opacity:0.7;}
+
 .step1-indicator{
   display: flex;
   flex-direction: row;
@@ -45,10 +47,6 @@
   justify-content: space-around;
   margin-left: 70px;
   margin-right: 70px;
-}
-
-.step1-inactive-circle{
-
 }
 
 .step1-input-wpr{
@@ -68,16 +66,17 @@
 }
 
 .step1-input-name{
-  width: 530px;
+  width: 550px;
+  height: 20px;
   border: 1px solid #AFD4C0;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 .step1-input-description{
   width: 530px;
   height: 100px;
   border: 1px solid #AFD4C0;
-  border-radius: 5px;
+  border-radius: 2px;
   padding: 10px;
   word-wrap: break-word;
   word-break: break-all;
@@ -101,5 +100,6 @@
   border-radius: 3px;
   opacity: 1;
   outline: 0;
-
 }
+
+.step1-btn-next:hover {opacity:0.7;}

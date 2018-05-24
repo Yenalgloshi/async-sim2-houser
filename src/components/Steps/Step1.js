@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import './Step1.css';
 import Header from '../Header/Header';
 import Inactive from './../../assets/step_inactive.png';
+import Active from './../../assets/step_active.png';
+import Completed from './../../assets/step_completed.png';
+
 
 class Step1 extends Component {
   render() {
@@ -11,16 +15,18 @@ class Step1 extends Component {
         <div className="step1-content">
           <div className="step1-subHdr">
             Add new listing
-            <button className="step1-cancel-btn">Cancel</button>
+            <Link to='/Dashboard'>
+              <button className="step1-cancel-btn">Cancel</button>
+            </Link>
           </div>
 
           <p>Step 1</p>
           <div className="step1-indicator">
-            <img src={Inactive} alt="step1-inactive-circle" />
-            <img src={Inactive} alt="step1-inactive-circle" />
-            <img src={Inactive} alt="step1-inactive-circle" />
-            <img src={Inactive} alt="step1-inactive-circle" />
-            <img src={Inactive} alt="step1-inactive-circle" />
+              <img src={Active} alt="step1-active-circle" />              
+              <img src={Inactive} alt="step1-inactive-circle" />
+              <img src={Inactive} alt="step1-inactive-circle" />
+              <img src={Inactive} alt="step1-inactive-circle" />
+              <img src={Inactive} alt="step1-inactive-circle" />
           </div>
 
           <div className="step1-input-wpr">
@@ -31,7 +37,9 @@ class Step1 extends Component {
           </div>
 
           <div className="step1-btn-wpr">
-            <button className="step1-btn-next">Next Step</button>
+            <Link to='./Step2'>
+              <button className="step1-btn-next">Next Step</button>
+            </Link>
           </div>
         </div>
         
