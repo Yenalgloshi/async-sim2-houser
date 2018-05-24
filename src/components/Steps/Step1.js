@@ -10,24 +10,24 @@ class Step1 extends Component {
         <Header/>
         <div className="step1-content">
           <div className="step1-subHdr">
-            <h1>Add new listing</h1>
+            Add new listing
             <button className="step1-cancel-btn">Cancel</button>
           </div>
 
           <p>Step 1</p>
           <div className="step1-indicator">
-            <img src={Inactive} alt="inactive-circle" />
-            <img src={Inactive} alt="inactive-circle" />
-            <img src={Inactive} alt="inactive-circle" />
-            <img src={Inactive} alt="inactive-circle" />
-            <img src={Inactive} alt="inactive-circle" />
+            <img src={Inactive} alt="step1-inactive-circle" />
+            <img src={Inactive} alt="step1-inactive-circle" />
+            <img src={Inactive} alt="step1-inactive-circle" />
+            <img src={Inactive} alt="step1-inactive-circle" />
+            <img src={Inactive} alt="step1-inactive-circle" />
           </div>
 
           <div className="step1-input-wpr">
-            <h3>Property Name</h3>
+            <div className="step1-input-title">Property Name</div>
             <input className="step1-input-name" type="text"/>
-            <h3>Property Description</h3>
-            <input className="step1-input-description" type="text"/>
+            <div className="step1-input-title">Property Description</div>
+            <textarea className="step1-input-description" type="text"/>
           </div>
 
           <div className="step1-btn-wpr">
