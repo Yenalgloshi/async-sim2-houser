@@ -34,10 +34,10 @@ class Step2 extends Component {
             <input className="step2-input-address" type="text"/>
 
             <div className="step2-input-subWpr">
-              <div className="step2-input-title">City</div>
+              <div className="step2-input-city-title">City</div>
               <input className="step2-input-city" type="text"/>
 
-              <div className="step2-input-title">State</div>
+              <div className="step2-input-state-title">State</div>
               <input className="step2-input-state" type="text"/>
             </div>
 

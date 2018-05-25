@@ -36,7 +36,7 @@
   margin-bottom: 20px;
   border: 1px solid #AFD4C0;
   height: 20px;
-  padding-left: 10px;
+  padding: 2px 10px;
 }
 
 .login-password{
@@ -44,11 +44,7 @@
   margin-bottom: 20px;
   border: 1px solid #AFD4C0;
   height: 20px;
-  padding-left: 10px;
-}
-
-.login-btns{
-
+  padding: 2px 10px;
 }
 
 .login-btn-login{

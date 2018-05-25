@@ -32,12 +32,12 @@ class Step3 extends Component {
           <div className="step3-input-wpr">
             <img src="https://www.myfirestorm.com/img/placeholder-img.jpg" className="step3-img-preview" alt=""/>
             <div className="step3-input-title">Image URL</div>
-            <input className="step3-input-URL" type="text"/>
+            <input className="step3-input-url" type="text"/>
           </div>
 
           <div className="step3-btn-wpr">
             <Link to='./Step2'>
-              <button className="step3-btn-next">Previous Step</button>
+              <button className="step3-btn-prev">Previous Step</button>
             </Link>
             <Link to='./Step4'>
               <button className="step3-btn-next">Next Step</button>

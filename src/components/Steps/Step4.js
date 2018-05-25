@@ -38,7 +38,7 @@ class Step4 extends Component {
 
           <div className="step4-btn-wpr">
             <Link to='./Step3'>
-              <button className="step4-btn-next">Previous Step</button>
+              <button className="step4-btn-prev">Previous Step</button>
             </Link>
             <Link to='./Step5'>
               <button className="step4-btn-next">Next Step</button>

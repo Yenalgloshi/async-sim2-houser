@@ -29,7 +29,7 @@ class Step5 extends Component {
               <img src={Active} alt="step5-active-circle" />              
           </div>
 
-          <div className="step5-rent-calc">Recommended Rent</div>
+          <div className="step5-rent-calc">Recommended Rent $</div>
           <div className="step5-input-wpr">
             <div className="step5-input-title">Desired Rent</div>
             <input className="step5-input-rent" type="text"/>
@@ -37,7 +37,7 @@ class Step5 extends Component {
 
           <div className="step5-btn-wpr">
             <Link to='./Step4'>
-              <button className="step5-btn-next">Previous Step</button>
+              <button className="step5-btn-prev">Previous Step</button>
             </Link>
             <Link to='./Dashboard'>
               <button className="step5-btn-complete">Complete</button>
