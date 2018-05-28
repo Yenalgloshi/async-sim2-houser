@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 import './Login.css';
 import AuthLogo from './../../assets/auth_logo.png'
 
@@ -13,6 +14,23 @@ class Login extends Component {
       btnDisable: true
     }
   }
+
+  handleUsernameChange(val){
+    this.setState({username: val})
+  }
+
+  handlePasswordChange(val){
+    this.setState({password: val})
+  }
+
+  handleLoginRequest(){
+
+  }
+
+  handleRegisterRequest(){
+
+  }
+
   render() {
     return(
       <div className="App">
@@ -22,16 +40,20 @@ class Login extends Component {
           </div>
           <div className="login-inputs">
             <div className="login-input-title">Username</div>
-            <input className="login-username" type="text"/>
+            <input onChange={ (e) => this.handleUsernameChange( e.target.value )} 
+                   className="login-username" 
+                   type="text"/>
             <div className="login-input-title">Password</div>
-            <input className="login-password" type="text"/>
+            <input onChange={ (e) => this.handlePasswordChange( e.target.value )}
+                   className="login-password" 
+                   type="text"/>
           </div>
           <div className="login-btns">
             <Link to='/Dashboard'>
-              <button className="login-btn-login">Login</button>
+              <button onClick={ this.handleLoginRequest } className="login-btn-login">Login</button>
             </Link>
             <Link to='/Dashboard'>
-              <button className="login-btn-reg">Register</button>
+              <button onClick={ this.handleRegisterRequest } className="login-btn-reg">Register</button>
             </Link>
           </div>
         </div>

@@ -8,6 +8,31 @@ import Completed from './../../assets/step_completed.png';
 
 
 class Step1 extends Component {
+  constructor(){
+    super()
+
+    this.state = {
+      propName: '',
+      propDesc: '',
+      nextBtnDisable: true
+    }
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleDescChange = this.handleDescChange.bind(this);
+    this.handleNextClick = this.handleNextClick.bind(this);
+  }
+
+  handleNameChange(val){
+    this.setState({propName: val})
+  }
+
+  handleDescChange(val){
+    this.setState({propDesc: val})
+  }
+
+  handleNextClick(){
+
+  }
+
   render() {
     return (
       <div className="App">
@@ -31,14 +56,21 @@ class Step1 extends Component {
 
           <div className="step1-input-wpr">
             <div className="step1-input-title">Property Name</div>
-            <input className="step1-input-name" type="text"/>
+            <input onChange={ (e) => this.handleNameChange(e.target.value)} 
+                   className="step1-input-name" 
+                   type="text"/>
             <div className="step1-input-title">Property Description</div>
-            <textarea className="step1-input-description" type="text"/>
+            <textarea onChange={ (e) => this.handleDescChange(e.target.value)} 
+                      className="step1-input-description" 
+                      type="text"/>
           </div>
 
           <div className="step1-btn-wpr">
             <Link to='./Step2'>
-              <button className="step1-btn-next">Next Step</button>
+              <button onClick={this.handleNextClick} 
+                      className="step1-btn-next"
+                      disabled={this.state.disabled}>
+                      Next Step</button>
             </Link>
           </div>
         </div>

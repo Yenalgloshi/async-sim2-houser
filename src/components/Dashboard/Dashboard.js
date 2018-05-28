@@ -43,8 +43,7 @@ class Dashboard extends Component {
   render() {
     let homes = data.map((home, i) =>{
       return(
-        <div key={i}>
-          <div className="dash-listing">
+          <div key={i} className="dash-listing">
             <img className="dash-listing-img" src={home.img} alt="home"/>
             <div className="dash-listing-column2">
               <div className="dash-listing-name">{home.name}</div>
@@ -62,7 +61,6 @@ class Dashboard extends Component {
             </div>
             <input onClick="Do something();" type="image" className="dash-listing-delX" src={deleteX} alt="delete-icon"/>
           </div>
-        </div>
       )
     })
 
