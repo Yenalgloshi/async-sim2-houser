@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 import './Step1.css';
 import Header from '../Header/Header';
 import Inactive from './../../assets/step_inactive.png';
@@ -12,24 +13,24 @@ class Step1 extends Component {
     super()
 
     this.state = {
-      propName: '',
-      propDesc: '',
-      nextBtnDisable: true
+      name: '',
+      description: '',
+      nextBtnDisable: false
     }
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleDescChange = this.handleDescChange.bind(this);
-    this.handleNextClick = this.handleNextClick.bind(this);
+    this.handleNextClick = this.handleNextBtnClick.bind(this);
   }
 
   handleNameChange(val){
-    this.setState({propName: val})
+    this.setState({name: val})
   }
 
   handleDescChange(val){
-    this.setState({propDesc: val})
+    this.setState({description: val})
   }
 
-  handleNextClick(){
+  handleNextBtnClick(){
 
   }
 
@@ -67,13 +68,13 @@ class Step1 extends Component {
 
           <div className="step1-btn-wpr">
             <Link to='./Step2'>
-              <button onClick={this.handleNextClick} 
+              <button onClick={this.handleNextBtnClick} 
                       className="step1-btn-next"
-                      disabled={this.state.disabled}>
+                      disabled={this.state.nextBtnDisable}>
                       Next Step</button>
             </Link>
           </div>
-        </div>
+        </div>B
         
       </div>
     );

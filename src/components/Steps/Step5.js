@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 import './Step5.css';
 import Header from '../Header/Header';
 import Inactive from './../../assets/step_inactive.png';
@@ -8,6 +9,25 @@ import Completed from './../../assets/step_completed.png';
 
 
 class Step5 extends Component {
+  constructor(){
+    super()
+
+    this.state = {
+      rent: 0,
+      completeBtnDisable: false
+    }
+    this.handleRentChange = this.handleRentChange.bind(this);
+
+  }
+
+  handleRentChange(val){
+    this.setState({rent: val})
+  }
+
+  handleCompleteBtnClick(){
+    
+  }
+
   render() {
     return (
       <div className="App">
@@ -32,7 +52,9 @@ class Step5 extends Component {
           <div className="step5-rent-calc">Recommended Rent $</div>
           <div className="step5-input-wpr">
             <div className="step5-input-title">Desired Rent</div>
-            <input className="step5-input-rent" type="text"/>
+            <input onChange={(e) => this.handleRentChange(e.target.value)} 
+                   className="step5-input-rent" 
+                   type="text"/>
           </div>
 
           <div className="step5-btn-wpr">
@@ -40,7 +62,10 @@ class Step5 extends Component {
               <button className="step5-btn-prev">Previous Step</button>
             </Link>
             <Link to='./Dashboard'>
-              <button className="step5-btn-complete">Complete</button>
+              <button onClick={this.handleCompleteBtnClick} 
+                      className="step5-btn-complete"
+                      disabled={this.state.completeBtnDisable}>
+                      Complete</button>
             </Link>
           </div>
         </div>

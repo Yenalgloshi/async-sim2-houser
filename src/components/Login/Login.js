@@ -13,6 +13,11 @@ class Login extends Component {
       password: "",
       btnDisable: true
     }
+    this.handleUsernameChange = this.handleUsernameChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleLoginRequest = this.handleLoginRequest.bind(this);
+    this.handleRegisterRequest = this.handleRegisterRequest.bind(this);
+
   }
 
   handleUsernameChange(val){
@@ -24,7 +29,7 @@ class Login extends Component {
   }
 
   handleLoginRequest(){
-
+    
   }
 
   handleRegisterRequest(){

@@ -1,4 +1,3 @@
-
 // IMPORTS/REQUIRES
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -9,10 +8,11 @@ require('dotenv').config()
 // VARIABLES
 const app = express();
 const createInitialSession = require( `${__dirname}/middlewares/session.js` );
+let creds = {username: 'ned', password: 'isdead'}
 
 // TOP LEVEL MIDDLEWARE
 app.use(bodyParser.json());
-app.use( session({
+app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
