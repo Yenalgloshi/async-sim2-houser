@@ -6,18 +6,19 @@ import Header from '../Header/Header';
 import Inactive from './../../assets/step_inactive.png';
 import Active from './../../assets/step_active.png';
 import Completed from './../../assets/step_completed.png';
-
+import { connect } from 'react-redux';
+import { addPropertyInfo } from '../../redux/reducer'
 
 class Step5 extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
 
     this.state = {
-      rent: 0,
+      rent: props.rent,
       completeBtnDisable: false
     }
     this.handleRentChange = this.handleRentChange.bind(this);
-
+    this.handleCompleteBtnClick = this.handleCompleteBtnClick.bind(this);
   }
 
   handleRentChange(val){
@@ -25,7 +26,9 @@ class Step5 extends Component {
   }
 
   handleCompleteBtnClick(){
-    
+    this.props.addPropertyInfo({
+      rent: this.state.rent
+    })
   }
 
   render() {
@@ -54,7 +57,8 @@ class Step5 extends Component {
             <div className="step5-input-title">Desired Rent</div>
             <input onChange={(e) => this.handleRentChange(e.target.value)} 
                    className="step5-input-rent" 
-                   type="text"/>
+                   type="text"
+                   value={this.state.rent}/>
           </div>
 
           <div className="step5-btn-wpr">
@@ -69,10 +73,15 @@ class Step5 extends Component {
             </Link>
           </div>
         </div>
-        
       </div>
     );
   }
 }
 
-export default Step5;
+function mapStateToProps(state){
+  return{
+    rent: state.rent
+  }
+}
+
+export default connect(mapStateToProps, {addPropertyInfo}) (Step5);

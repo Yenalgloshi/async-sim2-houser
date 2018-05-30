@@ -29,7 +29,7 @@ class Login extends Component {
   }
 
   handleLoginRequest(){
-    
+
   }
 
   handleRegisterRequest(){
@@ -55,10 +55,12 @@ class Login extends Component {
           </div>
           <div className="login-btns">
             <Link to='/Dashboard'>
-              <button onClick={ this.handleLoginRequest } className="login-btn-login">Login</button>
+              <button onClick={ this.handleLoginRequest } 
+                      className="login-btn-login">Login</button>
             </Link>
             <Link to='/Dashboard'>
-              <button onClick={ this.handleRegisterRequest } className="login-btn-reg">Register</button>
+              <button onClick={ this.handleRegisterRequest } 
+                      className="login-btn-reg">Register</button>
             </Link>
           </div>
         </div>

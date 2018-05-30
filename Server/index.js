@@ -8,7 +8,6 @@ require('dotenv').config()
 // VARIABLES
 const app = express();
 const createInitialSession = require( `${__dirname}/middlewares/session.js` );
-let creds = {username: 'ned', password: 'isdead'}
 
 // TOP LEVEL MIDDLEWARE
 app.use(bodyParser.json());

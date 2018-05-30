@@ -6,20 +6,22 @@ import Header from '../Header/Header';
 import Inactive from './../../assets/step_inactive.png';
 import Active from './../../assets/step_active.png';
 import Completed from './../../assets/step_completed.png';
-
+import { connect } from 'react-redux';
+import { addPropertyInfo } from '../../redux/reducer'
 
 class Step1 extends Component {
-  constructor(){
-    super()
-
+  constructor(props){
+    super(props)
+    console.log(props)
+    
     this.state = {
-      name: '',
-      description: '',
+      name: props.name,
+      description: props.description,
       nextBtnDisable: false
     }
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleDescChange = this.handleDescChange.bind(this);
-    this.handleNextClick = this.handleNextBtnClick.bind(this);
+    this.handleNextBtnClick = this.handleNextBtnClick.bind(this);
   }
 
   handleNameChange(val){
@@ -31,7 +33,10 @@ class Step1 extends Component {
   }
 
   handleNextBtnClick(){
-
+    this.props.addPropertyInfo({
+      name: this.state.name,
+      description: this.state.description
+    })
   }
 
   render() {
@@ -59,11 +64,13 @@ class Step1 extends Component {
             <div className="step1-input-title">Property Name</div>
             <input onChange={ (e) => this.handleNameChange(e.target.value)} 
                    className="step1-input-name" 
-                   type="text"/>
+                   type="text"
+                   value={this.state.name}/>
             <div className="step1-input-title">Property Description</div>
             <textarea onChange={ (e) => this.handleDescChange(e.target.value)} 
                       className="step1-input-description" 
-                      type="text"/>
+                      type="text"
+                      value={this.state.description}/>
           </div>
 
           <div className="step1-btn-wpr">
@@ -74,11 +81,28 @@ class Step1 extends Component {
                       Next Step</button>
             </Link>
           </div>
-        </div>B
+        </div>
         
       </div>
     );
   }
 }
 
-export default Step1;
+// mapStateToProps - this is the input for the component
+// this function tells the store what data this component wants to subcribe to
+function mapStateToProps(state){
+  // whatever you return here will be put on the props object for this component;
+  //  the key in this object will be the key on the props object
+  //   the value for the key in this object will be the value for the key on the props object
+  return{
+    name: state.name,
+    description: state.description
+  }
+}
+// mapStateToProps is the input... what data do we want from the redux store to be put on the our component?
+// action object with the action creators is the output... what action do we want to be able to trigger/dispatch a change in the redux store's state
+
+//                           input             output
+export default connect(mapStateToProps, {addPropertyInfo}) (Step1);
+
+// this will return a new Step1 component that is now connected and subscribed to the store

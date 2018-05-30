@@ -6,23 +6,26 @@ import Header from '../Header/Header';
 import Inactive from './../../assets/step_inactive.png';
 import Active from './../../assets/step_active.png';
 import Completed from './../../assets/step_completed.png';
-
+import { connect } from 'react-redux';
+import { addPropertyInfo } from '../../redux/reducer'
 
 class Step2 extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
+    console.log(props)
 
     this.state = {
-      address: '',
-      city: '',
-      state: '',
-      zip: '',
+      address: props.address,
+      city: props.city,
+      state: props.state,
+      zip: props.zip,
       nextBtnDisabled: false
     }
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.handleCityChange = this.handleCityChange.bind(this);
     this.handleStateChange = this.handleStateChange.bind(this);
     this.handleZipChange = this.handleZipChange.bind(this);
+    this.handleNextBtnClick = this.handleNextBtnClick.bind(this);
 
   }
 
@@ -43,7 +46,12 @@ class Step2 extends Component {
   }
 
   handleNextBtnClick(){
-    
+    this.props.addPropertyInfo({
+      address: this.state.address,
+      city: this.state.city,
+      state: this.state.state,
+      zip: this.state.zip
+    })
   }
 
   render() {
@@ -71,24 +79,28 @@ class Step2 extends Component {
             <div className="step2-input-title">Address</div>
             <input onChange={ (e) => this.handleAddressChange(e.target.value)} 
                    className="step2-input-address" 
-                   type="text"/>
+                   type="text"
+                   value={this.state.address}/>
 
             <div className="step2-input-subWpr">
               <div className="step2-input-city-title">City</div>
               <input onChange={ (e) => this.handleCityChange(e.target.value)} 
                      className="step2-input-city" 
-                     type="text"/>
+                     type="text"
+                     value={this.state.city}/>
 
               <div className="step2-input-state-title">State</div>
               <input onChange={ (e) => this.handleStateChange(e.target.value)} 
                      className="step2-input-state" 
-                     type="text"/>
+                     type="text"
+                     value={this.state.state}/>
             </div>
 
             <div className="step2-input-title">Zip</div>
             <input onChange={ (e) => this.handleZipChange(e.target.value)} 
                    className="step2-input-zip" 
-                   type="text"/>
+                   type="text"
+                   value={this.state.zip}/>
           </div>
 
           <div className="step2-btn-wpr">
@@ -103,10 +115,18 @@ class Step2 extends Component {
             </Link>
           </div>
         </div>
-        
       </div>
     );
   }
 }
 
-export default Step2;
+function mapStateToProps(state){
+  return{
+    address: state.address,
+    city: state.city,
+    state: state.state,
+    zip: state.zip
+  }
+}
+
+export default connect(mapStateToProps, {addPropertyInfo}) (Step2);

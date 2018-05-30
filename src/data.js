@@ -49,3 +49,6 @@ export default [
   },
   
 ]
+
+
+// https://earlyamericans.wikispaces.com/file/view/Hogan_and_Sweat_Lodge.12791716_std.jpg/254466390/Hogan_and_Sweat_Lodge.12791716_std.jpg

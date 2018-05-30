@@ -6,22 +6,30 @@ import Header from '../Header/Header';
 import Inactive from './../../assets/step_inactive.png';
 import Active from './../../assets/step_active.png';
 import Completed from './../../assets/step_completed.png';
-
+import { connect } from 'react-redux';
+import { addPropertyInfo } from '../../redux/reducer'
 
 class Step3 extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
+    console.log(props)
 
     this.state = {
-      imgUrl: '',
+      imgUrl: props.imgUrl,
       nextBtnDisable: false
     }
     this.handleImgUrlChange = this.handleImgUrlChange.bind(this);
-
+    this.handleNextBtnClick = this.handleNextBtnClick.bind(this);
   }
 
     handleImgUrlChange(val){
       this.setState({imgUrl: val})
+    }
+
+    handleNextBtnClick(){
+      this.props.addPropertyInfo({
+        imgUrl: this.state.imgUrl
+      })
     }
 
   render() {
@@ -46,11 +54,12 @@ class Step3 extends Component {
           </div>
 
           <div className="step3-input-wpr">
-            <img src="https://www.myfirestorm.com/img/placeholder-img.jpg" className="step3-img-preview" alt=""/>
+            <img src={this.state.imgUrl} className="step3-img-preview" alt=""/>
             <div className="step3-input-title">Image URL</div>
             <input onChange={ (e) => this.handleImgUrlChange(e.target.value)} 
                    className="step3-input-url" 
-                   type="text"/>
+                   type="text"
+                   value={this.state.imgUrl}/>
           </div>
 
           <div className="step3-btn-wpr">
@@ -65,10 +74,15 @@ class Step3 extends Component {
             </Link>
           </div>
         </div>
-        
       </div>
     );
   }
 }
 
-export default Step3;
+function mapStateToProps(state){
+  return{
+    imgUrl: state.imgUrl
+  }
+}
+
+export default connect(mapStateToProps, {addPropertyInfo}) (Step3);

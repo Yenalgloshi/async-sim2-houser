@@ -6,15 +6,16 @@ import Header from '../Header/Header';
 import Inactive from './../../assets/step_inactive.png';
 import Active from './../../assets/step_active.png';
 import Completed from './../../assets/step_completed.png';
-
+import { connect } from 'react-redux';
+import { addPropertyInfo } from '../../redux/reducer'
 
 class Step4 extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
 
     this.state = {
-      loan: 0,
-      mortgage: 0,
+      loan: props.loan,
+      mortgage: props.mortgage,
       nextBtnDisable: false
     }
     this.handleLoanChange = this.handleLoanChange.bind(this);
@@ -32,7 +33,10 @@ class Step4 extends Component {
   }
 
   handleNextBtnClick(){
-
+    this.props.addPropertyInfo({
+      loan: this.state.loan,
+      mortgage: this.state.mortgage
+    })
   }
 
   render() {
@@ -60,11 +64,13 @@ class Step4 extends Component {
             <div className="step4-input-title">Loan Amount</div>
             <input onChange={ (e) => this.handleLoanChange(e.target.value)} 
                    className="step4-input-loan" 
-                   type="text"/>
+                   type="text"
+                   value={this.state.loan}/>
             <div className="step4-input-title">Monthly Mortgage</div>
             <input onChange={ (e) => this.handleMortgageChange(e.target.value)} 
                    className="step4-input-mortgage" 
-                   type="text"/>
+                   type="text"
+                   value={this.state.mortgage}/>
           </div>
 
           <div className="step4-btn-wpr">
@@ -80,10 +86,16 @@ class Step4 extends Component {
             </Link>
           </div>
         </div>
-        
       </div>
     );
   }
 }
 
-export default Step4;
+function mapStateToProps(state){
+  return{
+    loan: state.loan,
+    mortgage: state.mortgage
+  }
+}
+
+export default connect(mapStateToProps, {addPropertyInfo}) (Step4);
