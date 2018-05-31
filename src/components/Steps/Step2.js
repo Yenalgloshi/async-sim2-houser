@@ -7,12 +7,11 @@ import Inactive from './../../assets/step_inactive.png';
 import Active from './../../assets/step_active.png';
 import Completed from './../../assets/step_completed.png';
 import { connect } from 'react-redux';
-import { addPropertyInfo } from '../../redux/reducer'
+import { addPropertyInfo, delPropertyInfo } from '../../redux/reducer'
 
 class Step2 extends Component {
   constructor(props){
     super(props)
-    console.log(props)
 
     this.state = {
       address: props.address,
@@ -26,7 +25,7 @@ class Step2 extends Component {
     this.handleStateChange = this.handleStateChange.bind(this);
     this.handleZipChange = this.handleZipChange.bind(this);
     this.handleNextBtnClick = this.handleNextBtnClick.bind(this);
-
+    this.handleCancelBtnClick = this.handleCancelBtnClick.bind(this);
   }
 
   handleAddressChange(val){
@@ -54,15 +53,21 @@ class Step2 extends Component {
     })
   }
 
+  handleCancelBtnClick(){
+    this.props.delPropertyInfo()
+  }
+
   render() {
     return (
       <div className="App">
-        <Header/>,
+        <Header/>
         <div className="step2-content">
           <div className="step2-subHdr">
             Add new listing
             <Link to='/Dashboard'>
-              <button className="step2-cancel-btn">Cancel</button>
+              <button onClick={this.handleCancelBtnClick} 
+                      className="step2-cancel-btn">
+                      Cancel</button>
             </Link>
           </div>
 
@@ -129,4 +134,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps, {addPropertyInfo}) (Step2);
+export default connect(mapStateToProps, {addPropertyInfo, delPropertyInfo}) (Step2);

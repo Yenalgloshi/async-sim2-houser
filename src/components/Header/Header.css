@@ -1,4 +1,6 @@
 .hdr-wpr{
+  position: fixed;
+  width: 100%;
   background-color: #519872;
   display: flex;
   flex-direction: row;
@@ -6,6 +8,7 @@
   height: 50px;
   align-items: center;
   color: white;
+  margin-top: -50px;
 }
 
 .hdr-logo{

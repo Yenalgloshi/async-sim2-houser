@@ -7,7 +7,7 @@ import Inactive from './../../assets/step_inactive.png';
 import Active from './../../assets/step_active.png';
 import Completed from './../../assets/step_completed.png';
 import { connect } from 'react-redux';
-import { addPropertyInfo } from '../../redux/reducer'
+import { addPropertyInfo, delPropertyInfo } from '../../redux/reducer'
 
 class Step5 extends Component {
   constructor(props){
@@ -19,6 +19,7 @@ class Step5 extends Component {
     }
     this.handleRentChange = this.handleRentChange.bind(this);
     this.handleCompleteBtnClick = this.handleCompleteBtnClick.bind(this);
+    this.handleCancelBtnClick = this.handleCancelBtnClick.bind(this);
   }
 
   handleRentChange(val){
@@ -31,7 +32,13 @@ class Step5 extends Component {
     })
   }
 
+  handleCancelBtnClick(){
+    this.props.delPropertyInfo()
+  }
+
   render() {
+    let calcRent = (this.props.mortgage * 1.25);
+ 
     return (
       <div className="App">
         <Header/>
@@ -39,7 +46,9 @@ class Step5 extends Component {
           <div className="step5-subHdr">
             Add new listing
             <Link to='/Dashboard'>
-              <button className="step5-cancel-btn">Cancel</button>
+              <button onClick={this.handleCancelBtnClick}
+                      className="step5-cancel-btn">
+                      Cancel</button>
             </Link>
           </div>
 
@@ -52,7 +61,7 @@ class Step5 extends Component {
               <img src={Active} alt="step5-active-circle" />              
           </div>
 
-          <div className="step5-rent-calc">Recommended Rent $</div>
+          <div className="step5-rent-calc">Recommended Rent ${calcRent}</div>
           <div className="step5-input-wpr">
             <div className="step5-input-title">Desired Rent</div>
             <input onChange={(e) => this.handleRentChange(e.target.value)} 
@@ -80,8 +89,9 @@ class Step5 extends Component {
 
 function mapStateToProps(state){
   return{
-    rent: state.rent
+    rent: state.rent,
+    mortgage: state.mortgage
   }
 }
 
-export default connect(mapStateToProps, {addPropertyInfo}) (Step5);
+export default connect(mapStateToProps, {addPropertyInfo, delPropertyInfo}) (Step5);

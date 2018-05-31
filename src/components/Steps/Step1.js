@@ -7,12 +7,11 @@ import Inactive from './../../assets/step_inactive.png';
 import Active from './../../assets/step_active.png';
 import Completed from './../../assets/step_completed.png';
 import { connect } from 'react-redux';
-import { addPropertyInfo } from '../../redux/reducer'
+import { addPropertyInfo, delPropertyInfo } from '../../redux/reducer'
 
 class Step1 extends Component {
   constructor(props){
     super(props)
-    console.log(props)
     
     this.state = {
       name: props.name,
@@ -22,6 +21,7 @@ class Step1 extends Component {
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleDescChange = this.handleDescChange.bind(this);
     this.handleNextBtnClick = this.handleNextBtnClick.bind(this);
+    this.handleCancelBtnClick = this.handleCancelBtnClick.bind(this);
   }
 
   handleNameChange(val){
@@ -39,6 +39,10 @@ class Step1 extends Component {
     })
   }
 
+  handleCancelBtnClick(){
+    this.props.delPropertyInfo()
+  }
+
   render() {
     return (
       <div className="App">
@@ -47,7 +51,9 @@ class Step1 extends Component {
           <div className="step1-subHdr">
             Add new listing
             <Link to='/Dashboard'>
-              <button className="step1-cancel-btn">Cancel</button>
+              <button onClick={this.handleCancelBtnClick} 
+                      className="step1-cancel-btn">
+                      Cancel</button>
             </Link>
           </div>
 
@@ -82,7 +88,6 @@ class Step1 extends Component {
             </Link>
           </div>
         </div>
-        
       </div>
     );
   }
@@ -103,6 +108,6 @@ function mapStateToProps(state){
 // action object with the action creators is the output... what action do we want to be able to trigger/dispatch a change in the redux store's state
 
 //                           input             output
-export default connect(mapStateToProps, {addPropertyInfo}) (Step1);
+export default connect(mapStateToProps, {addPropertyInfo, delPropertyInfo}) (Step1);
 
 // this will return a new Step1 component that is now connected and subscribed to the store
