@@ -7,7 +7,8 @@ require('dotenv').config()
 
 // VARIABLES
 const app = express();
-const createInitialSession = require( `${__dirname}/middlewares/session.js` );
+const ctrl = require('./controller');
+// const createInitialSession = require( `${__dirname}/middlewares/session.js` );
 
 // TOP LEVEL MIDDLEWARE
 app.use(bodyParser.json());
@@ -17,10 +18,22 @@ app.use(session({
   saveUninitialized: true
 }));
 
-massive( process.env.CONNECTION_STRING ).then( dbInstance => app.set('db', dbInstance) );
+massive(process.env.CONNECTION_STRING).then(dbInstance =>{
+  dbInstance.seedFile()
+  .then(res => console.log('Seed successful'))
+  .catch(err => console.log('Seed not successful', err))
+
+  app.set('db', dbInstance);
+
+}).catch(err => console.log(err))
 
 // ENDPOINTS
-
+app.post('/api/auth/login', ctrl.userLogin)
+app.post('/api/auth/register', ctrl.userReg)
+app.post('/api/auth/logout', ctrl.userLogout)
+app.post('/api/properties', ctrl.createProperty)
+app.get('/api/properties', ctrl.getProperties)
+app.delete('/api/properties/:id', ctrl.delProperty)
 
 // LISTEN
 const port = 3210;

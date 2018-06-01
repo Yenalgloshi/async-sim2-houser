@@ -53,9 +53,12 @@
 }
 
 .step3-img-preview{
+  background-color: #EEE;
+  display: flex;
   width: 600px;
   height: 330px;
   margin: 20px 0px;
+  border: 1px solid #AFD4C0;
 }
 
 .step3-input-title{

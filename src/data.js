@@ -1,7 +1,7 @@
 export default [
   {
       name: 'The American dream home',
-      description: 'This is a beautiful home located has a large fully-fenced lot with mature landscaping, several fruit trees, and a garden area. The home has an open plan design with beautiful marble and wood floors. There is plenty of room for entertaining with a formal dining area off the kitchen and a large backyard deck. The master suite is upstairs and it even boasts a hot tub. With four bedrooms, a nice family room, and a great location.',
+      description: 'This is a beautiful home that has a large fully-fenced lot with mature landscaping, several fruit trees, and a garden area. The home has an open plan design with beautiful marble and wood floors. There is plenty of room for entertaining with a formal dining area off the kitchen and a large backyard deck. The master suite is upstairs and it even boasts a hot tub. With four bedrooms, a nice family room, and a great location.',
       address: 'Suburbia',
       city: 'Woodside',
       state: 'UT',

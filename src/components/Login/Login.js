@@ -17,8 +17,13 @@ class Login extends Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleLoginRequest = this.handleLoginRequest.bind(this);
     this.handleRegisterRequest = this.handleRegisterRequest.bind(this);
-
   }
+
+  // componentDidMount() {
+  //   axios.get('/api/auth/login').then(() => {
+  //   this.props.history.push('/dashboard')
+  //   }).catch(response => {})
+  // }
 
   handleUsernameChange(val){
     this.setState({username: val})
@@ -29,7 +34,14 @@ class Login extends Component {
   }
 
   handleLoginRequest(){
-
+  //   axios.post('/api/auth/login', {
+  //     username: this.state.username,
+  //     password: this.state.password
+  //  }).then (response => {
+  //    this.props.history.push();           // Part of React History lib. Keeps track of session history; it pushes a new entry onto the history stack
+  //  }).catch(response => {
+  //    alert('Username and/or Password not found')
+  //  })
   }
 
   handleRegisterRequest(){
@@ -54,10 +66,9 @@ class Login extends Component {
                    type="text"/>
           </div>
           <div className="login-btns">
-            <Link to='/Dashboard'>
-              <button onClick={ this.handleLoginRequest } 
-                      className="login-btn-login">Login</button>
-            </Link>
+            <button onClick={ this.handleLoginRequest } 
+                    className="login-btn-login">
+                    Login</button>
             <Link to='/Dashboard'>
               <button onClick={ this.handleRegisterRequest } 
                       className="login-btn-reg">Register</button>
