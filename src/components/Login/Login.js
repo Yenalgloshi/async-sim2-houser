@@ -52,8 +52,7 @@ class Login extends Component {
      this.props.history.push('/dashboard');          
    }).catch(response => {
     this.props.history.push('/');
-    console.log(response)
-     alert(response)
+     alert('The username entered already exists. Please try a different name.')
    })
   }
 

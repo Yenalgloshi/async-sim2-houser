@@ -20,36 +20,37 @@ class Dashboard extends Component {
 
   componentDidMount() {
     axios.get('/api/properties').then(response => {
-       this.setState({homeListings: response.data})
+      this.setState({homeListings: response.data})
     })
   }
-
+  
   handleLogout(){
-
+    
   }
   
   handleRentInputChange(val){
     this.setState({rentFilter: val})
   }
-
+  
   handleFilterBtn(){
-
+    
   }
-
+  
   handleResetBtn(){
     this.setState({rentFilter: 0})
   }
-
+  
   handleAddPropBtn(){
-
+    
   }
-
+  
   handleDelPropXBtn(){
-
+    
   }
-
+  
   
   render() {
+    console.log(this.state.homeListings)
     let homes = this.state.homeListings.map((home, i) =>{
       // if (home.rent > this.state.rentFilter){}
       return(
