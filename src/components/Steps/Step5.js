@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import './Step5.css';
 import Header from '../Header/Header';
-import Inactive from './../../assets/step_inactive.png';
+// import Inactive from './../../assets/step_inactive.png';
 import Active from './../../assets/step_active.png';
 import Completed from './../../assets/step_completed.png';
 import { connect } from 'react-redux';

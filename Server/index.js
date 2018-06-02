@@ -28,6 +28,7 @@ massive(process.env.CONNECTION_STRING).then(dbInstance =>{
 }).catch(err => console.log(err))
 
 // ENDPOINTS
+// app.get('/api/auth/users', ctrl.getUsers)
 app.post('/api/auth/login', ctrl.userLogin)
 app.post('/api/auth/register', ctrl.userReg)
 app.post('/api/auth/logout', ctrl.userLogout)

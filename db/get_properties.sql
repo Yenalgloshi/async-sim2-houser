@@ -1,0 +1,1 @@
+select * from houser_properties where user_id = 1;

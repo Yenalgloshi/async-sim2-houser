@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import './Step4.css';
 import Header from '../Header/Header';
 import Inactive from './../../assets/step_inactive.png';

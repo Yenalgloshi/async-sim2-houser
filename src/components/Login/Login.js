@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import axios from 'axios';
 import './Login.css';
 import AuthLogo from './../../assets/auth_logo.png'
@@ -34,18 +34,27 @@ class Login extends Component {
   }
 
   handleLoginRequest(){
-  //   axios.post('/api/auth/login', {
-  //     username: this.state.username,
-  //     password: this.state.password
-  //  }).then (response => {
-  //    this.props.history.push();           // Part of React History lib. Keeps track of session history; it pushes a new entry onto the history stack
-  //  }).catch(response => {
-  //    alert('Username and/or Password not found')
-  //  })
+    axios.post('/api/auth/login', {
+      username: this.state.username,
+      password: this.state.password
+   }).then (response => {
+     this.props.history.push('/dashboard');           // Part of React History lib. Keeps track of routing history; it pushes a new entry onto the history stack
+   }).catch(response => {
+     alert('Username and/or Password not found')
+   })
   }
 
   handleRegisterRequest(){
-
+    axios.post('/api/auth/register', {
+      username: this.state.username,
+      password: this.state.password
+   }).then (response => {
+     this.props.history.push('/dashboard');          
+   }).catch(response => {
+    this.props.history.push('/');
+    console.log(response)
+     alert(response)
+   })
   }
 
   render() {
@@ -69,10 +78,9 @@ class Login extends Component {
             <button onClick={ this.handleLoginRequest } 
                     className="login-btn-login">
                     Login</button>
-            <Link to='/Dashboard'>
-              <button onClick={ this.handleRegisterRequest } 
-                      className="login-btn-reg">Register</button>
-            </Link>
+            <button onClick={ this.handleRegisterRequest } 
+                    className="login-btn-reg">
+                    Register</button>
           </div>
         </div>
       </div>
