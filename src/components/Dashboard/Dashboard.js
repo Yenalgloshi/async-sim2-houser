@@ -48,7 +48,8 @@ class Dashboard extends Component {
   }
   
   handleDelPropXBtn(){
-    
+    let promise = axios.delete('/api/product/:id')
+    promise.then( res => {})
   }
   
   

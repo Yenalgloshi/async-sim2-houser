@@ -2,7 +2,7 @@ module.exports = {
   userLogin:  (req, res, next) => {
     req.app.get('db').user_login(req.body.username, req.body.password).then( loginResults => {
       if(loginResults[0]) {
-        req.session.userId = loginResults[0].id;
+        req.session.userId = loginResults[0].userid;
         res.status(200).send('Login successful');
       } else {
           return res.status(403).send('User not found. Access denied');
@@ -33,9 +33,10 @@ module.exports = {
   },
 
   createProperty: (req, res, next) => {
+    console.log(req.session)
     const db = req.app.get('db');
 
-    db.create_property(req.body.user_id,
+    db.create_property(req.session.userId,
                        req.body.prop_name,
                        req.body.prop_desc,
                        req.body.address,
@@ -56,7 +57,7 @@ module.exports = {
   getProperties: (req, res, next) => {
     const db = req.app.get('db');
 
-    db.get_properties()
+    db.get_properties(req.body.user_id)
       .then(properties => { res.status(200).send(properties); })
       .catch( err => {
         console.log(err);

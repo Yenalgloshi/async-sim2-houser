@@ -19,9 +19,9 @@ app.use(session({
 }));
 
 massive(process.env.CONNECTION_STRING).then(dbInstance =>{
-  dbInstance.seedFile()
-  .then(res => console.log('Seed successful'))
-  .catch(err => console.log('Seed not successful', err))
+  // dbInstance.seedFile()
+  // .then(res => console.log('Seed successful'))
+  // .catch(err => console.log('Seed not successful', err))
 
   app.set('db', dbInstance);
 

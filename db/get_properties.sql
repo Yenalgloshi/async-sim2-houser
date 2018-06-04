@@ -1,2 +1,1 @@
-select * from houser_properties 
--- where prop_id = $1;
+select * from houser_properties where user_id = $1;
