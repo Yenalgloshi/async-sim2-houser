@@ -65,7 +65,14 @@ module.exports = {
   },
 
   delProperty: (req, res, next) => {
-    
+    const db = req.app.get('db');
+
+    db.delete_property()
+      .then(properties => { res.status(200).send(properties); })
+      .catch( err => {
+        console.log(err);
+        res.status(500).send(err);
+      });
   }
 
 }

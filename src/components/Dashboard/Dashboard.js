@@ -12,15 +12,17 @@ class Dashboard extends Component {
 
     this.state = {
       rentFilter: 0,
-      homeListings: []
+      allHomeListings: [],
+      filterHomeListings: []
     }
     this.handleRentInputChange = this.handleRentInputChange.bind(this);
     this.handleResetBtn = this.handleResetBtn.bind(this);
+    this.handleFilterBtn = this.handleFilterBtn.bind(this);
   }
 
   componentDidMount() {
     axios.get('/api/properties').then(response => {
-      this.setState({homeListings: response.data})
+      this.setState({allHomeListings: response.data})
     })
   }
   
@@ -33,11 +35,12 @@ class Dashboard extends Component {
   }
   
   handleFilterBtn(){
-    
+    let filtered = this.state.allHomeListings.filter((obj,i,arr) => obj.rent >= this.state.rentFilter);
+    this.setState({filterHomeListings: filtered});
   }
   
   handleResetBtn(){
-    this.setState({rentFilter: 0})
+    this.setState({rentFilter: 0, filterHomeListings: []})
   }
   
   handleAddPropBtn(){
@@ -50,35 +53,6 @@ class Dashboard extends Component {
   
   
   render() {
-    console.log(this.state.homeListings)
-    let homes = this.state.homeListings.map((home, i) =>{
-      // if (home.rent > this.state.rentFilter){}
-      return(
-          <div key={i} className="dash-listing">
-            <img className="dash-listing-img" src={home.img_url} alt="home"/>
-            <div className="dash-listing-column2">
-              <div className="dash-listing-name">{home.prop_name}</div>
-              <div className="dash-listing-descript">{home.prop_desc}</div>
-            </div>
-            <div className="vl"></div>
-            <div className="dash-listing-column3">
-              <div className="dash-listing-address">Address: {home.address}</div>
-              <div className="dash-listing-city">City: {home.city}</div>
-              <div className="dash-listing-state">State: {home.state}</div>
-              <div className="dash-listing-zip">Zip: {home.zip}</div>
-              <div className="dash-listing-loan">Loan: {home.loan_amt}</div>
-              <div className="dash-listing-mortgage">Mortgage: {home.mon_mort}</div>
-              <div className="dash-listing-rent">Rent: {home.rent}</div>
-            </div>
-            <input onClick={this.handleDelPropXBtn} 
-                   type="image" 
-                   className="dash-listing-delX" 
-                   src={deleteX} 
-                   alt="delete-icon"/>
-          </div>
-      )
-    })
-
     return (
       <div className="App">
         <Header/>
@@ -93,7 +67,9 @@ class Dashboard extends Component {
                      type="text" 
                      className="dash-filter-input"
                      value={this.state.rentFilter}/>
-              <button className="dash-filter-btn">Filter</button>
+              <button onClick={this.handleFilterBtn}
+                      className="dash-filter-btn">
+                      Filter</button>
               <button onClick={this.handleResetBtn}
                       className="dash-reset-btn">
                       Reset</button>
@@ -103,7 +79,62 @@ class Dashboard extends Component {
           <div className="dash-listing-wpr">
             Home Listings
           </div>
-          {homes}
+          
+            { this.state.filterHomeListings.length === 0 
+              ? this.state.allHomeListings.map((home, i) =>{
+                return(
+                    <div key={i} className="dash-listing">
+                      <img className="dash-listing-img" src={home.img_url} alt="home"/>
+                      <div className="dash-listing-column2">
+                        <div className="dash-listing-name">{home.prop_name}</div>
+                        <div className="dash-listing-descript">{home.prop_desc}</div>
+                      </div>
+                      <div className="vl"></div>
+                      <div className="dash-listing-column3">
+                        <div className="dash-listing-address">Address: {home.address}</div>
+                        <div className="dash-listing-city">City: {home.city}</div>
+                        <div className="dash-listing-state">State: {home.state}</div>
+                        <div className="dash-listing-zip">Zip: {home.zip}</div>
+                        <div className="dash-listing-loan">Loan: {home.loan_amt}</div>
+                        <div className="dash-listing-mortgage">Mortgage: {home.mon_mort}</div>
+                        <div className="dash-listing-rent">Rent: {home.rent}</div>
+                      </div>
+                      <input onClick={this.handleDelPropXBtn} 
+                             type="image" 
+                             className="dash-listing-delX" 
+                             src={deleteX} 
+                             alt="delete-icon"/>
+                    </div>
+                )
+              })   
+              :   this.state.filterHomeListings.map((home, i) =>{
+                return(
+                    <div key={i} className="dash-listing">
+                      <img className="dash-listing-img" src={home.img_url} alt="home"/>
+                      <div className="dash-listing-column2">
+                        <div className="dash-listing-name">{home.prop_name}</div>
+                        <div className="dash-listing-descript">{home.prop_desc}</div>
+                      </div>
+                      <div className="vl"></div>
+                      <div className="dash-listing-column3">
+                        <div className="dash-listing-address">Address: {home.address}</div>
+                        <div className="dash-listing-city">City: {home.city}</div>
+                        <div className="dash-listing-state">State: {home.state}</div>
+                        <div className="dash-listing-zip">Zip: {home.zip}</div>
+                        <div className="dash-listing-loan">Loan: {home.loan_amt}</div>
+                        <div className="dash-listing-mortgage">Mortgage: {home.mon_mort}</div>
+                        <div className="dash-listing-rent">Rent: {home.rent}</div>
+                      </div>
+                      <input onClick={this.handleDelPropXBtn} 
+                             type="image" 
+                             className="dash-listing-delX" 
+                             src={deleteX} 
+                             alt="delete-icon"/>
+                    </div>
+                )
+              })
+            }
+
         </div>
       </div>
     );
