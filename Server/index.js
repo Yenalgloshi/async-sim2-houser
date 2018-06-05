@@ -34,7 +34,7 @@ app.post('/api/auth/register', ctrl.userReg)
 app.post('/api/auth/logout', ctrl.userLogout)
 app.post('/api/properties', ctrl.createProperty)
 app.get('/api/properties', ctrl.getProperties)
-app.delete('/api/properties/:id', ctrl.delProperty)
+app.delete('/api/properties/:propId', ctrl.delProperty)
 
 // LISTEN
 const port = 3210;

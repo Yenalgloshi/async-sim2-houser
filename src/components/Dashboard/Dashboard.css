@@ -139,8 +139,16 @@
   margin-top: 10px;
 }
 
+.dash-listing-column4{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-left: auto;
+}
+
 .dash-listing-delX{
-  position: absolute;
-  right: 370px;
   margin-top: 5px;
+  text-align: right;
+  height: 14px;
+  margin-right: 6px;
 }

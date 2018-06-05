@@ -31,12 +31,19 @@
 
 .hdr-logout{
   margin-left: 470px;
+}
+
+.hdr-logout-btn{
   font-size: 0.9em;
   font-weight: bold;
+  color: white;
+  background-color: #519872;
+  border: none;
+
 }
 
 a {text-decoration: none;}
 
 a:visited{color: white;}
 
-a:hover{color:#3B5249;}
+.hdr-logout-btn:hover{color:#3B5249;}

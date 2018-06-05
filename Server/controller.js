@@ -29,7 +29,9 @@ module.exports = {
   },
   
   userLogout: (req, res, next) => {
-
+    req.session.destroy(function() {
+      res.sendStatus(200);
+    });
   },
 
   createProperty: (req, res, next) => {
@@ -57,7 +59,7 @@ module.exports = {
   getProperties: (req, res, next) => {
     const db = req.app.get('db');
 
-    db.get_properties(req.body.user_id)
+    db.get_properties(req.session.userId)
       .then(properties => { res.status(200).send(properties); })
       .catch( err => {
         console.log(err);
@@ -68,8 +70,15 @@ module.exports = {
   delProperty: (req, res, next) => {
     const db = req.app.get('db');
 
-    db.delete_property()
-      .then(properties => { res.status(200).send(properties); })
+    db.delete_property(+req.params.propId)
+      .then(properties => { 
+        db.get_properties(req.session.userId)
+        .then(properties => { res.status(200).send(properties); })
+        .catch( err => {
+          console.log(err);
+          res.status(500).send(err);
+        });
+       })
       .catch( err => {
         console.log(err);
         res.status(500).send(err);
