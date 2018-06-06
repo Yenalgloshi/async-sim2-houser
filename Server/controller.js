@@ -19,6 +19,7 @@ module.exports = {
         res.status(403).send('The username entered already exists. Please try a different name.');
       } else {
         db.user_reg(req.body.username, req.body.password).then(regres => {
+          req.session.userId = regres[0].userid;
           res.status(200).send('Registration successful');
         }).catch(err => {
           console.log(err)

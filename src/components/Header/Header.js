@@ -4,6 +4,8 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom' ;
 import './Header.css';
 import Logo from './../../assets/header_logo.png';
+import {delPropertyInfo} from '../../redux/reducer';
+import {connect} from 'react-redux';
 
 class Header extends Component{
   constructor(){
@@ -13,6 +15,7 @@ class Header extends Component{
 
   handleLogout(){
     axios.post('/api/auth/logout').then (response => {
+      this.props.delPropertyInfo();
       this.props.history.push('/');           // Part of React History lib. Keeps track of routing history; it pushes a new entry onto the history stack
       alert('Successfully logged out')
     })
@@ -43,4 +46,4 @@ class Header extends Component{
   }
 }
 
-export default withRouter(Header);
+export default connect(null, {delPropertyInfo})(withRouter(Header));

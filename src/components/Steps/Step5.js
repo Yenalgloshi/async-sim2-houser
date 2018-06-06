@@ -41,6 +41,7 @@ class Step5 extends Component {
        rent: this.state.rent
       })
     promise.then (res => {
+      this.props.delPropertyInfo()
       this.props.history.push('/dashboard');
     })
   }
