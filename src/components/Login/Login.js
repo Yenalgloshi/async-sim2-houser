@@ -19,12 +19,6 @@ class Login extends Component {
     this.handleRegisterRequest = this.handleRegisterRequest.bind(this);
   }
 
-  // componentDidMount() {
-  //   axios.get('/api/auth/login').then(() => {
-  //   this.props.history.push('/dashboard')
-  //   }).catch(response => {})
-  // }
-
   handleUsernameChange(val){
     this.setState({username: val})
   }
@@ -38,7 +32,9 @@ class Login extends Component {
       username: this.state.username,
       password: this.state.password
    }).then (response => {
-     this.props.history.push('/dashboard');           // Part of React History lib. Keeps track of routing history; it pushes a new entry onto the history stack
+     // Part of React History lib. Keeps track of routing history; 
+     //  it pushes a new entry onto the history stack
+     this.props.history.push('/dashboard');           
    }).catch(response => {
      alert('Username and/or Password not found')
    })

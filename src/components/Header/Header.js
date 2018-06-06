@@ -16,7 +16,7 @@ class Header extends Component{
   handleLogout(){
     axios.post('/api/auth/logout').then (response => {
       this.props.delPropertyInfo();
-      this.props.history.push('/');           // Part of React History lib. Keeps track of routing history; it pushes a new entry onto the history stack
+      this.props.history.push('/');
       alert('Successfully logged out')
     })
     

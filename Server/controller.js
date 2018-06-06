@@ -36,7 +36,6 @@ module.exports = {
   },
 
   createProperty: (req, res, next) => {
-    console.log(req.session)
     const db = req.app.get('db');
 
     db.create_property(req.session.userId,
