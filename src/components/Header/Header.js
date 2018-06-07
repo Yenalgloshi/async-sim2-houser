@@ -10,6 +10,7 @@ import {connect} from 'react-redux';
 class Header extends Component{
   constructor(){
     super()
+
     this.handleLogout = this.handleLogout.bind(this);
   }
 
@@ -46,4 +47,4 @@ class Header extends Component{
   }
 }
 
-export default connect(null, {delPropertyInfo})(withRouter(Header));
+export default withRouter(connect(null, {delPropertyInfo})(Header));

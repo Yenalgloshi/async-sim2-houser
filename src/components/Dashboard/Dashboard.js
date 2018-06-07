@@ -44,7 +44,9 @@ class Dashboard extends Component {
   }
   
   handleDelPropXBtn(propId){
+    // home.prop_id is passed in as propId
     let promise = axios.delete(`/api/properties/${propId}`)
+    // after the delete the response will have the updated property listing
     promise.then( res => { this.setState({ allHomeListings: res.data })
     })
   }
@@ -65,7 +67,7 @@ class Dashboard extends Component {
         <div className="dash-content">
           <div className="dash-UI">
             <Link to='/Step1'>
-            <button className="dash-addProp-btn">Add new property</button>
+              <button className="dash-addProp-btn">Add new property</button>
             </Link>
             <div className="dash-filter">
               List properties with "desired rent" greater than: $
@@ -104,7 +106,8 @@ class Dashboard extends Component {
                     <div className="dash-listing-rent">Rent: {home.rent}</div>
                   </div>
                   <div className="dash-listing-column4">
-                    <input onClick={() => this.handleDelPropXBtn(home.prop_id)}  
+                    {/* home.prop_id is passed into the method as an argument */}
+                    <input onClick={() => this.handleDelPropXBtn(home.prop_id)}   
                             type="image" 
                             className="dash-listing-delX" 
                             src={deleteX} 

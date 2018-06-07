@@ -15,7 +15,7 @@ module.exports = {
 
     db.get_users(req.body.username).then( (usernameRes) => {
 
-      if( usernameRes[0] ) {
+      if( usernameRes[0] ) {  // check to see if username exists
         res.status(403).send('The username entered already exists. Please try a different name.');
       } else {
         db.user_reg(req.body.username, req.body.password).then(regres => {
@@ -70,7 +70,7 @@ module.exports = {
   delProperty: (req, res, next) => {
     const db = req.app.get('db');
 
-    db.delete_property(+req.params.propId)
+    db.delete_property(+req.params.propId) // params are passed as strings and need to be converted to a int
       .then(properties => { 
         db.get_properties(req.session.userId)
         .then(properties => { res.status(200).send(properties); })

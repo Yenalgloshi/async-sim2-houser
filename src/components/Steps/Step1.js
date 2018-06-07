@@ -34,8 +34,8 @@ class Step1 extends Component {
 
   handleNextBtnClick(){
     this.props.addPropertyInfo({
-      name: this.state.name,
-      description: this.state.description
+      name: this.state.name,                // sends these state values
+      description: this.state.description   //  to the store.
     })
   }
 

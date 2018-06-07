@@ -21,6 +21,7 @@ export default function reducer(state = initialState, action){
   switch(action.type) {
     case ADD_PROPERTY_INFO:
       return Object.assign({}, state, action.payload)
+    
     case RESET_STORE:
       return initialState;
 

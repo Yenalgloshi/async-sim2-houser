@@ -28,8 +28,7 @@ class Step5 extends Component {
 
   handleCompleteBtnClick(){
     let promise = axios.post('/api/properties',
-      {user_id: this.props.user_id,
-       prop_name: this.props.name,
+      {prop_name: this.props.name,
        prop_desc: this.props.description,
        address: this.props.address,
        city: this.props.city,
